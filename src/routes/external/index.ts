@@ -1,1 +1,1 @@
-export * from './epExampleExternal';
+export * from './epStatus';

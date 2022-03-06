@@ -42,9 +42,11 @@
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "joi": "^17.6.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "mongodb": "^4.4.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@types/amqplib": "^0.8.2",

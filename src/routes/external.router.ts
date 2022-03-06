@@ -1,8 +1,7 @@
 import { Router } from 'express';
 
-import { epExampleExternal } from './external';
-import { mwAuthorization } from '../../src-ms';
+import { epStatus } from './external';
 
 export const externalRouter = Router();
 
-externalRouter.get('/entityExternal', mwAuthorization, epExampleExternal);
+externalRouter.get('/status', epStatus);
