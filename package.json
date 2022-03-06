@@ -1,7 +1,7 @@
 {
-  "name": "its__ms_template",
+  "name": "its__ms_monitoring",
   "version": "0.0.1",
-  "description": "MS Template - management",
+  "description": "MS Monitoring - logs, healthchecks, metrics",
   "license": "MIT",
   "author": {
     "name": "Sergey Dunaevskiy",
