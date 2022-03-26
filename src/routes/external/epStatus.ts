@@ -1,17 +1,15 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
-
-import { ITS_MS_PATHS } from '../../constants';
+import { BrokerMessageLog } from '@its/ms';
+import { ITS_MS_PATHS, MS_NAME } from '../../constants';
 import { logger } from '../../broker';
-import { BrokerMessageLog } from '../../../src-ms';
 
 export const epStatus = async (req: Request, res: Response) => {
-	const log: BrokerMessageLog = {
+	logger.send({
 		createdAt: new Date(),
-		description: 'Status request',
-		ms: 'monitoring',
-	};
-	logger.send(log);
+		description: 'status request',
+		ms: MS_NAME,
+	} as BrokerMessageLog);
 
 	try {
 		const requests = ITS_MS_PATHS.map(({ name, baseUrl }) =>
@@ -30,8 +28,14 @@ export const epStatus = async (req: Request, res: Response) => {
 
 		const statuses = await Promise.allSettled(requests);
 
-		return res.status(200).json({ message: 'Statuses', data: statuses });
+		return res.status(200).json({ message: 'service statuses', data: statuses });
 	} catch (error) {
+		logger.send({
+			createdAt: new Date(),
+			description: 'status request failed',
+			ms: MS_NAME,
+		} as BrokerMessageLog);
+
 		return res.status(500).json({ message: 'internal server error' });
 	}
 };
