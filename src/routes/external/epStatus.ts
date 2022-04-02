@@ -14,7 +14,7 @@ export const epStatus = async (req: Request, res: Response) => {
 	try {
 		const requests = ITS_MS_PATHS.map(({ name, baseUrl }) =>
 			axios
-				.get(baseUrl + '/about')
+				.get(baseUrl + '/about', { timeout: 2000 })
 				.then((response) => ({
 					name,
 					status: response.status,
